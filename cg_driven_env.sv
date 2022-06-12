@@ -1,5 +1,7 @@
 class cg_driven_env extends uvm_env;
 
+    `uvm_component_utils(cg_driven_env)
+
     pkt_agent pkt_agt;
 
     function new(string name = "cg_driven_en", uvm_component parent);
