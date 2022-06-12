@@ -1,5 +1,7 @@
 class cg_driven_test extends uvm_test;
 
+    `uvm_component_utils(cg_driven_test)
+
     function new(string name = "cg_driven_test", uvm_component parent);
         super.new(name, parent);
     endfunction : new
@@ -9,9 +11,9 @@ class cg_driven_test extends uvm_test;
     endfunction : build_phase
 
     virtual task main_phase(uvm_phase phase);
-        phase.raise_objection(this);
         super.main_phase(phase);
-        `uvm_info("TEST", "Hello, World!", UVM_MEDIUM)
+        phase.raise_objection(this);
+        `uvm_info("TEST", "Hello, World!", UVM_LOW)
         phase.drop_objection(this);
     endtask : main_phase
 

@@ -13,7 +13,7 @@ module tb;
     pkt_if pkt_if();
 
     initial begin
-        uvm_db_config#(virtual pkt_if)::set(null, "*", "pkt_vif", pkt_if);
+        uvm_config_db#(virtual pkt_if)::set(null, "*", "pkt_vif", pkt_if);
         run_test();
     end
 
