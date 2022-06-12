@@ -2,6 +2,8 @@ class cg_driven_test extends uvm_test;
 
     `uvm_component_utils(cg_driven_test)
 
+    pkt_sequence seq;
+
     cg_driven_env env;
 
     function new(string name = "cg_driven_test", uvm_component parent);
@@ -17,6 +19,8 @@ class cg_driven_test extends uvm_test;
         super.main_phase(phase);
         phase.raise_objection(this);
         `uvm_info("TEST", "Hello, World!", UVM_LOW)
+        seq = pkt_sequence::type_id::create("seq");
+        seq.start(env.pkt_agt.sqr);
         phase.drop_objection(this);
     endtask : main_phase
 
