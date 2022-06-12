@@ -2,26 +2,21 @@ import pkt_agent_pkg::pkt_tr;
 
 class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
 
-    logic [3:0] addr;
-    logic [3:0] data;
-    logic [1:0] freq;
-
     `uvm_component_utils(cg_driven_subscriber)
 
-    covergroup cg_addr;
-        c_addr : coverpoint addr;
-    endgroup
+    pkt_tr tr;
 
+    covergroup cg_addr;
+        c_addr : coverpoint tr.addr;
+    endgroup
 
     function new (string name = "cg_driven_subscriber", uvm_component parent);
         super.new(name, parent);
         cg_addr = new();
     endfunction : new
 
-    virtual function void write (pkt_tr tr);
-        addr = tr.addr;
-        data = tr.data;
-        freq = tr.freq;
+    virtual function void write (pkt_tr t);
+        tr = t;
         cg_addr.sample();
     endfunction : write
 
