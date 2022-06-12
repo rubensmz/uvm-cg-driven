@@ -22,6 +22,7 @@ class cg_driven_test extends uvm_test;
         seq = pkt_sequence::type_id::create("seq");
         repeat(10) begin
             seq.start(env.pkt_agt.sqr);
+            `uvm_info("CF", $sformatf("CG coverage = %0.2f %", env.cg_subs.cg_addr.get_inst_coverage()), UVM_MEDIUM);
         end
         phase.drop_objection(this);
     endtask : main_phase
