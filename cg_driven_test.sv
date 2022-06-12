@@ -20,7 +20,7 @@ class cg_driven_test extends uvm_test;
         `uvm_info("TEST", "Hello, World!", UVM_LOW)
         #100ns;
         seq = pkt_sequence::type_id::create("seq");
-        repeat(10) begin
+        while(env.cg_subs.cg_addr.get_inst_coverage() < 100.0) begin
             seq.start(env.pkt_agt.sqr);
             `uvm_info("CF", $sformatf("CG coverage = %0.2f %", env.cg_subs.cg_addr.get_inst_coverage()), UVM_MEDIUM);
         end
