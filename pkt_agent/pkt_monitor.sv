@@ -22,11 +22,13 @@ class pkt_monitor extends uvm_monitor;
     virtual task run_phase(uvm_phase phase);
         super.run_phase(phase);
         tr = pkt_tr::type_id::create("tr");
-        @(posedge pkt_if.clk);
-        tr.addr = pkt_if.addr;
-        tr.data = pkt_if.data;
-        `uvm_info("MON", $sformatf("Sending transaction %0s", tr.sprint()), UVM_MEDIUM)
-        mon_analysis_port.write(tr);
+        forever begin
+            @(posedge pkt_if.clk);
+            tr.addr = pkt_if.addr;
+            tr.data = pkt_if.data;
+            `uvm_info("MON", $sformatf("Sending transaction %0s", tr.sprint()), UVM_MEDIUM)
+            mon_analysis_port.write(tr);
+        end
     endtask : run_phase
 
 endclass : pkt_monitor
