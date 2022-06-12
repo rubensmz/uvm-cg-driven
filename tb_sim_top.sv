@@ -7,7 +7,8 @@ module tb;
 
     dut u_dut(
         .addr(pkt_if.addr),
-        .data(pkt_if.data)
+        .data(pkt_if.data),
+        .clk (pkt_if.clk)
     );
 
     pkt_if pkt_if();
