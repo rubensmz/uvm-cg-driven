@@ -1,7 +1,7 @@
 class pkt_tr extends uvm_sequence_item;
 
-    logic [3:0] addr;
-    logic [3:0] data;
+    rand logic [3:0] addr;
+    rand logic [3:0] data;
 
     function new(string name="pkt_tr");
         super.new(name);
