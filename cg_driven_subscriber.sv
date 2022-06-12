@@ -17,7 +17,7 @@ class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
 
     virtual function void write (pkt_tr t);
         addr = t.addr;
-        `uvm_info("SUBS", $sformatf("New transaction received:\n%0s", tr.sprint()), UVM_MEDIUM)
+        `uvm_info("SUBS", $sformatf("New transaction received:\n%0s", t.sprint()), UVM_MEDIUM)
         cg_addr.sample();
     endfunction : write
 
