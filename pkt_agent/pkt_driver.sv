@@ -34,7 +34,6 @@ class pkt_driver extends uvm_driver #(pkt_tr);
             3: half_clk_ns = 5;
         endcase
 
-
         pkt_if.clk = 1'b1;
         pkt_if.addr = req.addr;
         pkt_if.data = req.data;
