@@ -34,14 +34,14 @@ class pkt_driver extends uvm_driver #(pkt_tr);
             3: half_clk_ns = 5;
         endcase
 
-        for(int i = 3; i >= 0; i--) begin
-            pkt_if.clk = 1'b1;
-            pkt_if.addr = req.addr[i];
-            pkt_if.data = req.data[i];
-            #(half_clk_ns * 1ns);
-            pkt_if.clk = 0;
-            #(half_clk_ns * 1ns);
-        end
+
+        pkt_if.clk = 1'b1;
+        pkt_if.addr = req.addr;
+        pkt_if.data = req.data;
+        #(half_clk_ns * 1ns);
+        pkt_if.clk = 0;
+        #(half_clk_ns * 1ns);
+
     endtask : drive
 
 endclass : pkt_driver
