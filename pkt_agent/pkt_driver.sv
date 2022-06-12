@@ -1,5 +1,7 @@
 class pkt_driver extends uvm_driver;
 
+    `uvm_component_utils(pkt_driver)
+
     virtual pkt_if pkt_if;
 
     function new(string name="pkt_driver", uvm_component parent);
