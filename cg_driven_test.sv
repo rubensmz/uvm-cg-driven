@@ -9,10 +9,10 @@ class cg_driven_test extends uvm_test;
     endfunction : build_phase
 
     virtual task main_phase(uvm_phase phase);
-        this.raise_objection(this);
+        phase.raise_objection(this);
         super.main_phase(phase);
         `uvm_info("TEST", "Hello, World!", UVM_MEDIUM)
-        this.drop_objection(this);
+        phase.drop_objection(this);
     endtask : main_phase
 
 endclass : cg_driven_test
