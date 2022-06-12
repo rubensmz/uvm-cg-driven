@@ -15,7 +15,6 @@ class pkt_driver extends uvm_driver #(pkt_tr);
     endfunction : build_phase
 
     task run_phase(uvm_phase phase);
-        int half_clk_ns;
         super.run_phase(phase);
 
         forever begin
@@ -27,6 +26,7 @@ class pkt_driver extends uvm_driver #(pkt_tr);
     endtask : run_phase
 
     virtual task drive();
+        int half_clk_ns;
         case(req.freq)
             0: half_clk_ns = 2;
             1: half_clk_ns = 3;
