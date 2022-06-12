@@ -4,7 +4,7 @@ package cg_driven_pkg;
 
     import pkt_agent_pkg::*;
 
-    `include "cg_driven_subscriber.sv"
+    //`include "cg_driven_subscriber.sv"
     `include "cg_driven_env.sv"
     `include "cg_driven_test.sv"
 
