@@ -19,7 +19,9 @@ class cg_driven_test extends uvm_test;
         phase.raise_objection(this);
         `uvm_info("TEST", "Hello, World!", UVM_LOW)
         seq = pkt_sequence::type_id::create("seq");
-        seq.start(env.pkt_agt.sqr);
+        repeat(10) begin
+            seq.start(env.pkt_agt.sqr);
+        end
         phase.drop_objection(this);
     endtask : main_phase
 
