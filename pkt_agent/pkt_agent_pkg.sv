@@ -1,6 +1,6 @@
 `include "pkt_if.sv"
 
-package pkt_agt_pkg;
+package pkt_agent_pkg;
     `include "uvm_macros.svh"
     import uvm_pkg::*;
 
@@ -9,4 +9,4 @@ package pkt_agt_pkg;
     `include "pkt_sequencer.sv"
     `include "pkt_monitor.sv"
     `include "pkt_agent.sv"
-endpackage : pkt_agt_pkg
+endpackage : pkt_agent_pkg
