@@ -4,10 +4,10 @@ class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
 
     `uvm_component_utils(cg_driven_subscriber)
 
-    logic [3:0] addr;
+    pkt_tr tr;
 
     covergroup cg_addr;
-        c_addr : coverpoint addr;
+        c_addr : coverpoint tr.addr;
     endgroup
 
     function new (string name = "cg_driven_subscriber", uvm_component parent);
@@ -16,8 +16,8 @@ class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
     endfunction : new
 
     virtual function void write (pkt_tr t);
-        addr = t.addr;
-        `uvm_info("SUBS", $sformatf("New transaction received:\n%0s", t.sprint()), UVM_MEDIUM)
+        tr = t;
+        `uvm_info("SUBS", $sformatf("New transaction received. Sampling coverage"), UVM_MEDIUM)
         cg_addr.sample();
     endfunction : write
 
