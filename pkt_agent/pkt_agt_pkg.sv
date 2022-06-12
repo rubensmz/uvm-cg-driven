@@ -1,6 +1,9 @@
 `include "pkt_if.sv"
 
 package pkt_agt_pkg;
+    `include "uvm_macros.svh"
+    import uvm_pkg::*;
+
     `include "pkt_tr.sv"
     `include "pkt_driver.sv"
     `include "pkt_sequencer.sv"
