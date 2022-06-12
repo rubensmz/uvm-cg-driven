@@ -5,6 +5,7 @@ package pkt_agent_pkg;
     import uvm_pkg::*;
 
     `include "pkt_tr.sv"
+    `include "pkt_sequence.sv"
     `include "pkt_driver.sv"
     `include "pkt_sequencer.sv"
     `include "pkt_monitor.sv"
