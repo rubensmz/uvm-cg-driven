@@ -20,12 +20,24 @@ class pkt_monitor extends uvm_monitor;
     endfunction : build_phase
 
     virtual task run_phase(uvm_phase phase);
+        int half_clk_ns;
         super.run_phase(phase);
         tr = pkt_tr::type_id::create("tr");
+
         forever begin
             @(posedge pkt_if.clk);
+            half_clk_ns = $time;
             tr.addr = pkt_if.addr;
             tr.data = pkt_if.data;
+            @(negedge pkt_if.clk);
+            half_clk_ns = $time - half_clk_ns;
+            case (half_clk_ns)
+                2: tr.freq = 0;
+                3: tr.freq = 1;
+                4: tr.freq = 2;
+                5: tr.freq = 3;
+                default: tr.freq = 'x;
+            endcase
             `uvm_info("MON", $sformatf("Sending transaction %0s", tr.sprint()), UVM_MEDIUM)
             mon_analysis_port.write(tr);
         end
