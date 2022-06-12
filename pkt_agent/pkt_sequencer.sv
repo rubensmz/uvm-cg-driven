@@ -1,4 +1,4 @@
-class pkt_sequencer extend uvm_sequencer;
+class pkt_sequencer extends uvm_sequencer;
 
     `uvm_component_utils(pkt_sequencer)
 
@@ -8,6 +8,6 @@ class pkt_sequencer extend uvm_sequencer;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-    endfunction build_phase
+    endfunction : build_phase
 
 endclass : pkt_sequencer

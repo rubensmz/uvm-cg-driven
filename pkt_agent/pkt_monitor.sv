@@ -1,4 +1,4 @@
-class pkt_monitor extend uvm_monitor;
+class pkt_monitor extends uvm_monitor;
 
     `uvm_component_utils(pkt_monitor)
 
@@ -12,6 +12,6 @@ class pkt_monitor extend uvm_monitor;
 
     virtual function void build_phase(uvm_phase phase);
         super.build_phase(phase);
-    endfunction build_phase
+    endfunction : build_phase
 
 endclass : pkt_monitor

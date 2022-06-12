@@ -1,4 +1,4 @@
-class pkt_driver extend uvm_driver;
+class pkt_driver extends uvm_driver;
 
     virtual pkt_if pkt_if;
 
@@ -10,6 +10,6 @@ class pkt_driver extend uvm_driver;
         super.build_phase(phase);
         if (!uvm_config_db::get#(virtual pkt_if)::get(this, "", "pkt_vif", pkt_if))
             `uvm_fatal("NO_IF", "Couldn't retrieve pkt_if from DB")
-    endfunction build_phase
+    endfunction : build_phase
 
 endclass : pkt_driver
