@@ -8,11 +8,10 @@ class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
 
     `uvm_component_utils(cg_driven_subscriber)
 
-    covergroup c_addr;
-        coverpoint addr;
+    covergroup cg_addr;
+        c_addr : coverpoint addr;
     endgroup
 
-    c_addr cg_addr;
 
     function new (string name = "cg_driven_subscriber", uvm_component parent);
         super.new(name, parent);
