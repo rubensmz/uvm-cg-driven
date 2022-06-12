@@ -1,4 +1,4 @@
-class pkt_sequencer extends uvm_sequencer;
+class pkt_sequencer extends uvm_sequencer#(pkt_tr);
 
     `uvm_component_utils(pkt_sequencer)
 
