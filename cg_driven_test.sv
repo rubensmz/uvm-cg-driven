@@ -10,6 +10,7 @@ class cg_driven_test extends uvm_test;
 
     virtual task main_phase(uvm_phase phase);
         super.main_phase(phase);
+        `uvm_info("TEST", "Hello, World!", UVM_MEDIUM)
     endtask : main_phase
 
 endclass : cg_driven_test
