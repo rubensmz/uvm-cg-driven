@@ -7,13 +7,14 @@ module tb;
 
     dut u_dut(
         .addr(pkt_if.addr),
-        .data(pkt_if.data)
+        .data(pkt_if.data),
+        .clk (pkt_if.clk)
     );
 
     pkt_if pkt_if();
 
     initial begin
-        uvm_db_config#(virtual pkt_if)::set(null, "*", "pkt_vif", pkt_if);
+        uvm_config_db#(virtual pkt_if)::set(null, "*", "pkt_vif", pkt_if);
         run_test();
     end
 

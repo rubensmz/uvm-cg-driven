@@ -1,3 +1,24 @@
-class cg_driven_subscriber extends uvm_subscriber;
+import pkt_agent_pkg::pkt_tr;
+
+class cg_driven_subscriber extends uvm_subscriber #(pkt_tr);
+
+    `uvm_component_utils(cg_driven_subscriber)
+
+    logic [3:0] addr;
+
+    covergroup cg_addr;
+        c_addr : coverpoint addr;
+    endgroup
+
+    function new (string name = "cg_driven_subscriber", uvm_component parent);
+        super.new(name, parent);
+        cg_addr = new();
+    endfunction : new
+
+    virtual function void write (pkt_tr t);
+        addr = t.addr;
+        `uvm_info("SUBS", $sformatf("New transaction received:\n%0s", t.sprint()), UVM_MEDIUM)
+        cg_addr.sample();
+    endfunction : write
 
 endclass : cg_driven_subscriber

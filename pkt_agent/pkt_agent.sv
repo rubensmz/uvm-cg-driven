@@ -1,4 +1,4 @@
-class pkt_agent extend uvm_agent;
+class pkt_agent extends uvm_agent;
 
     `uvm_component_utils(pkt_agent)
 
@@ -19,7 +19,7 @@ class pkt_agent extend uvm_agent;
         end
         mon = pkt_monitor::type_id::create("mon", this);
 
-    endfunction build_phase
+    endfunction : build_phase
 
     virtual function void connect_phase(uvm_phase phase);
         super.connect_phase(phase);
